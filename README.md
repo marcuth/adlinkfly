@@ -13,19 +13,20 @@
 
 ## Install
 
-```
+```bash
 npm i adlinkfly
 ```
 
 ## Simple use example
 
-```js
-import { AdLinkFly } from "adlinkfly"
+```ts
+import { AdLinkFly, BaseUrl } from "adlinkfly"
 
 (async () => {
     const shortener = new AdLinkFly({
         apiToken: "YOUR_API_TOKEN_HERE",
         baseUrl: "PLATFORM_BASE_URL_HERE" // Some may require a "/" at the end, for example: https://encurtanet.com/api/
+        // baseUrl: BaseUrl.ShrtFly // or you can use the enum BaseUrl
     })
 
     const urlInfo = await shortener.shorten({
