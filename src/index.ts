@@ -1,5 +1,4 @@
-export * from "./encurtanet"
-export * from "./enums"
+export * from "./adlinkfly"
 export * from "./interfaces"
 export * from "./error"
 export * from "./response"

@@ -1,46 +1,53 @@
 import axios from "axios"
 
-import { EncurtaNetResponse } from "./response"
+import { AdLinkFlyResponse } from "./response"
 import { ShortenParams } from "./interfaces"
-import { EncurtaNetError } from "./error"
-import { AdsType } from "./enums"
+import { AdLinkFlyError } from "./error"
 
-export const baseUrl = "https://encurta.net/api/"
+export type AdLinkFlyOptions = {
+    apiToken: string
+    baseUrl: string
+}
 
 export type ShortenOptions = {
     url: string
+    adsType: number
     alias?: string
     isTextFormat?: boolean
-    adsType?: AdsType
 }
 
-export class EncurtaNet {
-    constructor(private readonly apiToken: string) {}
+export class AdLinkFly {
+    readonly baseUrl: string
+    readonly apiToken: string
+
+    constructor({ apiToken, baseUrl }: AdLinkFlyOptions) {
+        this.baseUrl = baseUrl
+        this.apiToken = apiToken
+    }
 
     async shorten({
         url,
         alias,
         isTextFormat,
         adsType
-    }: ShortenOptions): Promise<EncurtaNetResponse> {
+    }: ShortenOptions): Promise<AdLinkFlyResponse> {
 
         const params: ShortenParams = {
             api: this.apiToken,
             url: url,
             alias: alias,
+            type: adsType
         }
 
         if (isTextFormat) {
             params.format = "text"
         }
-            
-        params.type = adsType ?? AdsType.InterstitialsAds
 
-        const response = await axios.get(baseUrl, { params })
+        const response = await axios.get(this.baseUrl, { params: params })
         const dataResponse = response.data
 
         if (response.status !== 200) {
-            throw new EncurtaNetError(
+            throw new AdLinkFlyError(
                 `[Request Error] Status code: ${response.status}`)
         }
 
@@ -50,10 +57,10 @@ export class EncurtaNet {
             if (Array.isArray(message)) {
                 message = message.join("")
             }
-            
-            throw new EncurtaNetError(message)
+
+            throw new AdLinkFlyError(message)
         }
 
-        return new EncurtaNetResponse(dataResponse, isTextFormat ?? false)
+        return new AdLinkFlyResponse(dataResponse, isTextFormat ?? false)
     }
 }

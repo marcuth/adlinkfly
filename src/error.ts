@@ -1,1 +1,1 @@
-export class EncurtaNetError extends Error {}
+export class AdLinkFlyError extends Error {}

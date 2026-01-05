@@ -1,7 +1,7 @@
 {
-  "name": "encurtanet",
-  "version": "2.0.1",
-  "description": "Um simples wrapper NÃO OFICIAL da API do EncurtaNet para JavaScript",
+  "name": "adlinkfly",
+  "version": "0.0.1",
+  "description": "AdLinkFly API wrapper for Node.js",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -13,7 +13,11 @@
     "build": "tsc"
   },
   "keywords": [
-    "encurtanet",
+    "adlinkfly",
+    "adlinkfly",
+    "shrtfly",
+    "exe.io",
+    "clicksfly",
     "wrapper",
     "api"
   ],
@@ -21,12 +25,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marcuth/ts.encurtanet"
+    "url": "git+https://github.com/marcuth/adlinkfly"
   },
   "bugs": {
-    "url": "https://github.com/marcuth/ts.encurtanet/issues"
+    "url": "https://github.com/marcuth/adlinkfly/issues"
   },
-  "homepage": "https://github.com/marcuth/ts.encurtanet#readme",
+  "homepage": "https://github.com/marcuth/adlinkfly#readme",
   "dependencies": {
     "axios": "^1.13.2"
   },
