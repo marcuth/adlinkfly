@@ -1,8 +1,7 @@
 import { AdLinkFlyError } from "./error"
 
 export class AdLinkFlyResponse {
-    constructor(private readonly data: any, private readonly isTextFormat: boolean) { }
-
+    constructor(readonly data: any, private readonly isTextFormat: boolean) { }
 
     get shortenedUrl(): string {
         if (this.isTextFormat) {
