@@ -1,18 +1,21 @@
 import { AdLinkFlyError } from "./error"
 
 export class AdLinkFlyResponse {
-    constructor(private readonly responseContent: any, private readonly isTextFormat: boolean) { }
+    constructor(private readonly data: any, private readonly isTextFormat: boolean) { }
 
-    get data() {
-        return this.responseContent
-    }
 
     get shortenedUrl(): string {
         if (this.isTextFormat) {
             throw new AdLinkFlyError("It is not possible to get this data because you passed 'isTextFormat' as true")
         }
 
-        return this.responseContent.shortenedUrl
+        const shortenedUrl = this.data.shortenedUrl || this.data.result.shorten_url
+
+        if (!shortenedUrl) {
+            throw new AdLinkFlyError("This data cannot be retrieved because the response does not contain the shortened URL or the property is unknown; please log \".data\".")
+        }
+
+        return shortenedUrl
     }
 
     get status(): string {
@@ -20,7 +23,7 @@ export class AdLinkFlyResponse {
             throw new AdLinkFlyError("It is not possible to get this data because you passed 'isTextFormat' as true")
         }
 
-        return this.responseContent.status
+        return this.data.status
     }
 
     get message(): string {
@@ -28,8 +31,8 @@ export class AdLinkFlyResponse {
             throw new AdLinkFlyError("It is not possible to get this data because you passed 'isTextFormat' as true")
         }
 
-        if ("message" in this.responseContent) {
-            return this.responseContent.message
+        if ("message" in this.data) {
+            return this.data.message
         }
 
         return ""
