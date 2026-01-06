@@ -11,6 +11,16 @@
 - LinkMonetizado: [https://linkmonetizado.com/](https://shrtfly.com/ref/marcuthdev) <!-- (https://linkmonetizado.com/ref/112583547307263051109) -->
 - LinkAds: [https://linkads.net/](https://shrtfly.com/ref/marcuthdev) <!-- (https://linkads.net/ref/112583547307263051109) -->
 
+---
+
+## Donate
+
+<a href="https://www.buymeacoffee.com/marcuth">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" width="200">
+</a>
+
+---
+
 ## Install
 
 ```bash
@@ -42,3 +52,16 @@ import { AdLinkFly, BaseUrl } from "adlinkfly"
 })()
 
 ```
+
+## 🤝 Contributing
+
+- Want to contribute? Follow these steps:
+- Fork the repository.
+- Create a new branch (git checkout -b feature-new).
+- Commit your changes (git commit -m 'Add new feature').
+- Push to the branch (git push origin feature-new).
+- Open a Pull Request.
+
+## 📝 License
+
+This project is licensed under the MIT License.
